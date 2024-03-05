@@ -1,0 +1,166 @@
+/* 1)A configuração "*" definine uma condiçao global, seja para todo o codigo ou por exemplo body* para definir uma configuraçao para tudo dentro do body e assim por diante.
+2)  Dentro dessa configuraçao do * esta tirando algumas config default do nevagor que colocam algumas margens e acabam atrapalhando no desenvolvimento
+3) Para simplificar a quantidade de linhas é possivel passar todas configuraçoes de uma mesma coisa como por exemplo o background(parte comentada
+do background serve de exemplo de como ficaria fazendo linha a linha e depois como ficaria simplificando o codigo), porém tem o caso do 
+"margin" no #container que funciona como um relogio, por exemplo começando de cima ou seja top > right > bottom > left. Porém se voce setar apenas 3 valores
+ele identifica como TOP > Left & Right > bottom
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.007);
+  --surface-color-hover: rgba(255, 255, 255, 0.1);
+  --social-link-hover: rgba(255, 255, 255, 0.2);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+  --switch-right: 0;
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.144);
+  --surface-color-hover: rgba(0, 0, 0, 0.5);
+  --social-link-hover: rgba(0, 0, 0, 0.5);
+  --switch-bg-url: url(./assets/sun.svg);
+  --highlight-color: rgba(0, 0, 0, 0.2);
+  --switch-right: 1;
+  --switch-avatar: url(./assets/avatar.svg);
+}
+
+body {
+  /*background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 350px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+#profile img {
+  width: 150px;
+  height: 150px;
+  font-weight: 500;
+  line-height: 24px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#profile p {
+  margin-top: 8px;
+}
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+/* position absolute sobrepoe o elemento e o z-index dita o andar que ele vai ficar, se deixar 1 ele fica acima de tudo se deixar 0 ele fica abaixo de tudo */
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  position: absolute;
+  right: var(--switch-right);
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*acima exemplo de como posicionar um elemento absolute  */
+
+#switch span {
+  border-radius: 9999px;
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+}
+ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.5s;
+}
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: x-large;
+  padding: 24px;
+}
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  transition: 0.5s;
+  border-radius: 50%;
+}
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+footer {
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/*1) border serve para definir uma borda e o border radius serve para arredondar essa borda
+2) backdrop-filter: blur serve para dar efeito de blur
+3) na parte do rgb os valor dentro sao sobre R(vermelho)G(verde)B(azul) e o valor final é sobre sua transparencia sendo por exemplo 1 a cor mais intensa/solida
+4) text decoration serve para por exemplo tirar a linha sobre um texto <a> ou colocar uma linha posicionada embaixo,em cima ou no meio do texto
+5) font weight serve para declarar a espessura da fonte
+5) list style serve para voce definir o estilo da lista que por padrao ela vem com as bolinhas de uma lista sem ordem
+caso seja uma lista ordenada<ol> ela vira com numeros, caso queira tirar essas propriedades basta declarar NONE
+6)gap serve para dar espaçamento entre os elementos
+7)Hover serve para passar algum efeito quando o mouse passa por cima de um elemento, neste caso quando eu colocar o mouse sobre os elementos da lista ele ira mudar a cor da borda e do background
+
+  */
