@@ -8,6 +8,7 @@ ele identifica como TOP > Left & Right > bottom
 
 * {
   margin: 0;
+
   padding: 0;
   box-sizing: border-box;
 }
@@ -36,7 +37,8 @@ ele identifica como TOP > Left & Right > bottom
   --switch-avatar: url(./assets/avatar.svg);
 }
 
-body {
+body,
+html {
   /*background-image: url(./assets/bg-mobile.jpg);
   background-repeat: no-repeat;
   background-position: top center;
@@ -44,7 +46,12 @@ body {
   */
 
   background: var(--bg-url) no-repeat top center/cover;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
+/*nessa situaçao o min-height serve para colocar que o tamanho minimo para o body(que seria o todo) é todo o viewport
+ou seja toda a area de visualizaçao, pois os navegadores acabam colocando algum tipo de margem que acaba quebrando a estrutura da pagina*/
 
 body * {
   font-family: "inter", sans-serif;
